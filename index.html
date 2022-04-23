@@ -11,22 +11,23 @@
 <body>
     <div id="wrapper">
 		<div id="add_product_form">
+            <form>
 			<input type="text" id="id" hidden>
 			<label for="product_sku">
 				<span>Product SKU</span> 
-				<input type="text" name="product_sku" id="product_sku">
+				<input type="text" name="product_sku" id="product_sku" required>
 			</label>
 			<label for="product_name">
 				<span>Product Name</span> 
-				<input type="text" name="product_name" id="product_name">
+				<input type="text" name="product_name" id="product_name" required>
 			</label>
 			<label for="product_price">
 				<span>Product Price</span> 
-				<input type="number" name="product_price" id="product_price">
+				<input type="number" name="product_price" id="product_price" required>
 			</label>
 			<label for="product_quantity">
 				<span>Product Quantity</span> 
-				<input type="number" name="product_quantity" id="product_quantity">
+				<input type="number" name="product_quantity" id="product_quantity" required>
 			</label>
 			<p class="submit">
 				<input type="button" name="add_product" id="add_product" value="Add Product">
@@ -34,6 +35,7 @@
 			<p class="submit">
 				<input type="button" name="update_product" id="update_product" value="Update Product">
 			</p>
+            </form>
 		</div>
 		<div id="notification">
 			<div class="success"><a href="#" class="close">X</a></div>
@@ -56,18 +58,22 @@ $("#add_product").click(()=>{
 
     if(P_skn == "" ){
         $("#product_sku").css({"border": "1px solid red"});
+        alert("sku field empty");
     }else if(P_name == ""){
         $("#product_sku").css({"border": "1px solid black"});
         $("#product_name").css({"border": "1px solid red"});
+        alert ("name field empty");
     } else if(P_price == ""){
         $("#product_sku").css({"border": "1px solid black"});
         $("#product_name").css({"border": "1px solid black"});
         $("#product_price").css({"border": "1px solid red"});
+        alert ("price field empty");
     } else if (P_quantity == ""){
         $("#product_sku").css({"border": "1px solid black"});
         $("#product_price").css({"border": "1px solid black"});
         $("#product_name").css({"border": "1px solid black"});
         $("#product_quantity").css({"border": "1px solid red"});
+        alert ("quantity field empty");
     } else{
         $("#product_quantity").css({"border": "1px solid black"});
         var data = {
@@ -114,6 +120,8 @@ $(document).on('click','.delete',function(){
     console.log("working")
     console.log(this.id)
     $(this).parent('td').parent("tr").remove();
+    alert(" deleting successfully")
+
 })
 
 $(document).on("click", '.edit', function(){
